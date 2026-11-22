@@ -84,17 +84,9 @@ def ethnicity_less_than(counties: list[CountyDemographics], key: str, threshold:
 
 # returns counties whose poverty percentage is above the threshold
 def below_poverty_level_greater_than(counties: list[CountyDemographics], threshold: float) -> list[CountyDemographics]:
-    result = []
-    for county in counties:
-        if county.income["Persons Below Poverty Level"] > threshold:
-            result.append(county)
-    return result
+    return [county for county in counties if county.income["Persons Below Poverty Level"] > threshold]
 
 
 # returns counties whose poverty percentage is below the threshold
 def below_poverty_level_less_than(counties: list[CountyDemographics], threshold: float) -> list[CountyDemographics]:
-    result = []
-    for county in counties:
-        if county.income["Persons Below Poverty Level"] < threshold:
-            result.append(county)
-    return result
+    return [county for county in counties if county.income["Persons Below Poverty Level"] < threshold]
